@@ -1,0 +1,72 @@
+﻿@model IEnumerable<TicketPurchase.Data.IPN>
+
+@{
+    ViewData["Title"] = "SeeAllPurchases";
+}
+
+<h2>SeeAllPurchases</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table" style="text-align: right;">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TransactionID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TxTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SessionID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalTickets)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TransactionAmount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PaymentStatus)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionID)
+            </td>
+            <td>
+                @item.TxTime.ToString("MMM d  zzz tt")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SessionID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalTickets)
+            </td>
+            <td>
+                @String.Format("{0:C}", item.TransactionAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentStatus)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
